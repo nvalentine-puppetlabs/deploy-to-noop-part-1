@@ -1,0 +1,11 @@
+---
+:backends:
+  - yaml
+
+:yaml:
+  :datadir: "/vagrant/puppet/environments/%{::environment}/data"
+
+:hierarchy:
+  - "clientcert/%{::clientcert}"
+  - "osfamily/%{::osfamily}"
+  - common
