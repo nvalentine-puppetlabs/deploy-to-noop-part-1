@@ -33,9 +33,9 @@ $ rake deps
 The Vagrant environment contains three nodes:
 * a Puppet Enterprise master running on Ubuntu 12.04
 * a PE agent running Ubuntu 12.04
-* a PE agent running CentOS 5.6
+* a PE agent running CentOS 6.5
 
-To start up the environment (this will take quite a while first time!):
+To start up the environment (this will take quite a while the first time!):
 
 ```bash
 $ vagrant up --no-provision && vagrant provision
