@@ -30,7 +30,7 @@ $ rake deps
 ```
 
 # Usage
-The Vagrant environments contains three nodes:
+The Vagrant environment contains three nodes:
 * a Puppet Enterprise master running on Ubuntu 12.04
 * a PE agent running Ubuntu 12.04
 * a PE agent running CentOS 5.6
@@ -38,7 +38,7 @@ The Vagrant environments contains three nodes:
 To start up the environment (this will take quite a while first time!):
 
 ```bash
-$ vagrant up
+$ vagrant up --no-provision && vagrant provision
 ```
 
 Connecting to the nodes is via the usual Vagrant commands. As an example, 
@@ -47,6 +47,10 @@ to connect to the Puppet Enterprise master:
 ```bash
 $ vagrant ssh master
 ```
+
+You can access the Puppet Enterprise Console with u/p admin@puppetlabs.com/puppetlabs
+@ https://&lt;master eth1 IP address&gt;.
+
 
 # Support
 Please create Issues + Pull Requests against the following repo:

@@ -1,6 +1,9 @@
 ---
 force_noop: true
 
+classes:
+  - site::profile::pe::agent
+
 site::profile::base::ntp_servrers:
   - 0.north-america.pool.ntp.org
   - 1.north-america.pool.ntp.org
@@ -9,7 +12,7 @@ site::profile::base::ops_group: &opsgroup ops
 
 site::profile::base::ops_users:
   nrvale0:
-    id: 1337
+    uid: 1337
     groups:
       - sudo
       - *opsgroup
@@ -21,5 +24,7 @@ site::profile::base::ssh_authorized_keys:
     key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDFGjXK1nKnGIIg7LERaDkBegCGFrTHgZ0d81f3kzifRINj2UjV9I5kWAMO9M3USfN0iwy/GFn95obmDj3M5gH+1/U8pP3UtP/J6XTrEcwiv63sSS+i1ib3cDeswoqTqDUbu89PncyfRCobkUHrXJWzY/5CEfXtDkBqCPMTQuV3sL+lueWHP1yV2HYSlpq/R+aS8y6DBx4lTRlkOODSRdmkWQg23HfpcWR3uzUeu5wcmVFEpjRbFwVwhLtARCYGVb5dPs65WbD+g6j47fpXjYcSTdSqa29QC5iQJDHOhcgnCVLlxybRLZA8nAtFgQyrFXRVYy2IDUStfo6KoreMkNT1'
 
 site::profile::base::sudo_rules:
-  ops:
+  'x%ops':
     content:  '%ops ALL=(ALL) ALL'
+  'vagrant':
+    content: '%vagrant ALL=NOPASSWD:ALL'

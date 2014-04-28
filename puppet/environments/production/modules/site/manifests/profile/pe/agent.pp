@@ -9,8 +9,9 @@ class site::profile::pe::agent(
   Ini_settings { ensure => present, path => '/etc/puppetlabs/puppet/puppet.conf', }
 
   ini_setting { 'PE agent environment setting':
+    path => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'agent',
     setting => 'environment',
-    value => $environment,
+    value => $::environment,
   }
 }

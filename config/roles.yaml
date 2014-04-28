@@ -6,10 +6,12 @@ roles:
     provider:
       type: virtualbox
       customize:
-        - [modifyvm, !ruby/sym id, '--memory', 1024]
+        - [modifyvm, !ruby/sym id, '--memory', 4096, '--vrde', 'on']
     provisioners:
       - {type: hosts}
       - {type: pe_bootstrap, role: !ruby/sym master}
+      - {type: shell, inline: '/bin/ln -f -s /opt/puppet/bin/puppet /usr/bin/puppet'}
+      - {type: puppet, manifests_path: ['vm','/vagrant/puppet/environments/production/manifests'], manifest_file: site.pp, options: '--modulepath=/vagrant/puppet/environments/production/modules:/opt/puppet/share/puppet/modules --hiera_config=/vagrant/puppet/environments/production/hiera_vagrant.yaml --verbose --debug'}
 
   pe-puppet-agent:
     private_networks:
@@ -17,3 +19,4 @@ roles:
     provisioners:
       - {type: hosts}
       - {type: pe_bootstrap}
+      - {type: shell, inline: '/bin/ln -s /opt/puppet/bin/puppet /usr/bin/puppet'}

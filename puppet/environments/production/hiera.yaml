@@ -3,7 +3,7 @@
   - yaml
 
 :yaml:
-  :datadir: "/vagrant/puppet/environments/%{::environment}/data"
+  :datadir: "/etc/puppetlabs/puppet/environments/%{::environment}/data"
 
 :hierarchy:
   - "clientcert/%{::clientcert}"

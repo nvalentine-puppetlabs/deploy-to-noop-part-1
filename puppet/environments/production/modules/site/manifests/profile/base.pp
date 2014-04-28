@@ -15,10 +15,10 @@ class site::profile::base(
   require ::site::profile
 
   require ::ntp
-  class { 'sudo': purge => true, config_file_replace => true, }
 
-  $sudo_rules_defaults = {}
-  create_resources('sudo::config', $sudo_rules, $sudo_rules_defaults)
+#  class { 'sudo': purge => true, config_file_replace => true, }
+#  $sudo_rules_defaults = {}
+#  create_resources('sudo::conf', $sudo_rules, $sudo_rules_defaults)
 
   $ssh_auth_keys_defaults = {}
   create_resources('ssh_authorized_key', $ssh_authorized_keys, $ssh_auth_keys_defaults)

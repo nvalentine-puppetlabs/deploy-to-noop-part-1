@@ -33,9 +33,25 @@ class site::profile::pe::master() {
   }
 
   file { 'PE hiera data':
-    ensure => file,
+    ensure => link,
     path => '/etc/puppetlabs/puppet/hiera.yaml',
-    source => "puppet:///${module_name}/pe/master/hiera.yaml",
+    target => '/etc/puppetlabs/puppet/environments/production/hiera.yaml',
+  }
+ 
+  ini_setting { 'PE module path':
+    ensure => present,
+    path => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'main',
+    setting => 'modulepath',
+    value => '/etc/puppetlabs/puppet/environmnets/production/modules:/opt/puppet/share/puppet/modules',
+  }
+
+  ini_setting { 'PE manifest path':
+    ensure => present,
+    path => '/etc/puppetlabs/puppet/puppet.conf',
+    section => 'main',
+    setting => 'manifest',
+    value => '/etc/puppetlabs/puuppet/environments/production/manifest/site.pp',
   }
 
   Service <| title == 'pe-httpd' |> { subscribe => File['PE hiera data'], }
