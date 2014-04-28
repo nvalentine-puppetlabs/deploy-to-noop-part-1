@@ -37,13 +37,19 @@ class site::profile::pe::master() {
     path => '/etc/puppetlabs/puppet/hiera.yaml',
     target => '/etc/puppetlabs/puppet/environments/production/hiera.yaml',
   }
+
+  file { 'PE hiera config from Vagrant':
+    ensure => link,
+    path => '/etc/puppetlabs/puppet/environments/production/hiera.yaml',
+    target => '/vagrant/puppet/environments/production/hiera.yaml',
+  }
  
   ini_setting { 'PE module path':
     ensure => present,
     path => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'main',
     setting => 'modulepath',
-    value => '/etc/puppetlabs/puppet/environmnets/production/modules:/opt/puppet/share/puppet/modules',
+    value => '/etc/puppetlabs/puppet/environments/production/modules:/opt/puppet/share/puppet/modules',
   }
 
   ini_setting { 'PE manifest path':
@@ -51,8 +57,11 @@ class site::profile::pe::master() {
     path => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'main',
     setting => 'manifest',
-    value => '/etc/puppetlabs/puuppet/environments/production/manifest/site.pp',
+    value => '/etc/puppetlabs/puppet/environments/production/manifests/site.pp',
   }
-
+  
   Service <| title == 'pe-httpd' |> { subscribe => File['PE hiera data'], }
+
+  # hack because we aren't monitoring hiera.yaml; just the symlink
+  exec { '/usr/sbin/service pe-httpd restart': }
 }
