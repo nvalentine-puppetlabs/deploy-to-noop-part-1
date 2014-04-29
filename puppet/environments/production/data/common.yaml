@@ -4,7 +4,7 @@ force_noop: true
 classes:
   - site::profile::pe::agent
 
-site::profile::base::ntp_servrers:
+site::profile::base::ntp_servers:
   - 0.north-america.pool.ntp.org
   - 1.north-america.pool.ntp.org
 
