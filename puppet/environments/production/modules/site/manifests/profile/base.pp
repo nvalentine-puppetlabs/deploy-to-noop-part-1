@@ -1,12 +1,12 @@
 class site::profile::base(
-  $ntp_servers = 'pool.ntp.org',
+  $ntp_servers = ['pool.ntp.org'],
   $ssh_authorized_keys = {},
   $sudo_rules = {},  
   $ops_users = {},
   $ops_group = 'ops'
 ) {
 
-  validate_string($ntp_servers)
+  validate_array($ntp_servers)
   validate_hash($ssh_authorized_keys)
   validate_hash($sudo_rules)
   validate_hash($ops_users)
