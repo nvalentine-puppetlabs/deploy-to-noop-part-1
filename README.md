@@ -1,6 +1,6 @@
 # demo-deploy-to-noop-part1
 
-This Vagrant environments is for demo and self-study of the 'deploy to noop'
+This Vagrant environment is for demo and self-study of the 'deploy to noop'
 technique of managing systems with Puppet Enterprise.
 
 You'll need to have downloaded and installed the following:
