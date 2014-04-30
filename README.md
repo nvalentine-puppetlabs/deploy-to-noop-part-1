@@ -32,16 +32,20 @@ $ rake deps
 
 # Usage
 The Vagrant environment contains four nodes:
-* a Puppet Enterprise master running on Ubuntu 12.04
-* a PE agent running Ubuntu 12.04
-* a PE agent running Debian GNU/Linux 7.3
-* a PE agent running CentOS 6.5
+* a Puppet Enterprise master running on Ubuntu 12.04 (4GB RAM)
+* a PE agent running Ubuntu 12.04 (1GB RAM)
+* a PE agent running Debian GNU/Linux 7.3 (1GB RAM)
+* a PE agent running CentOS 6.5 (1GB RAM)
 
-To start up the environment (this will take quite a while the first time!):
+To start up the environment: 
 
 ```bash
 $ vagrant up --no-provision && vagrant provision
 ```
+
+The above will take a few minutes the first time as the VirtualBox VMs are not
+only built out but the required Vagrant baseboxes and PE installer bits will likely
+have to be fetched and cached.
 
 Connecting to the nodes is via the usual Vagrant commands. As an example, 
 to connect to the Puppet Enterprise master:
