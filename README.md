@@ -19,6 +19,7 @@ To check whether or not your system has all of the dependencies necessary to run
 ```bash
 $ rake deps
 Checking environment dependencies...
+...
 Congratulations! Everything looks a-ok.
 ```
 
@@ -30,9 +31,10 @@ $ rake deps
 ```
 
 # Usage
-The Vagrant environment contains three nodes:
+The Vagrant environment contains four nodes:
 * a Puppet Enterprise master running on Ubuntu 12.04
 * a PE agent running Ubuntu 12.04
+* a PE agent running Debian GNU/Linux 7.3
 * a PE agent running CentOS 6.5
 
 To start up the environment (this will take quite a while the first time!):
