@@ -15,7 +15,7 @@ vms:
   roles:
   - pe-puppet-agent
 
-- name: centos59-0
+- name: centos65-0
   box: centos-65-x64-vbox4210-nocm
   roles:
   - pe-puppet-agent
