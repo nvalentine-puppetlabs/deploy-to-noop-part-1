@@ -10,6 +10,11 @@ vms:
   roles:
   - pe-puppet-agent
 
+- name: debian73-0
+  box: debian-73-x64-virtualbox-nocm
+  roles:
+  - pe-puppet-agent
+
 - name: centos59-0
   box: centos-65-x64-vbox4210-nocm
   roles:
