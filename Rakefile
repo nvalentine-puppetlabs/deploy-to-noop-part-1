@@ -4,7 +4,7 @@ require 'ptools'
 task :default => 'deps'
 
 necessary_programs = %w(VirtualBox vagrant)
-necessary_plugins = %w(vagrant-auto_network vagrant-pe_build oscar)
+necessary_plugins = %w(vagrant-auto_network vagrant-pe_build oscar vagrant-multiprovider-snap)
 
 desc 'Check for the environment dependencies'
 task :deps do
@@ -44,3 +44,12 @@ task :setup do
     end
   end
 end
+
+desc 'Launch deploy-to-noop-demo environment'
+task :run do
+  unless system("vagrant up --no-provision && vagrant provision")
+    abort "Launch of demo environment failed! See debugging prints above for more information."
+  end
+end
+
+

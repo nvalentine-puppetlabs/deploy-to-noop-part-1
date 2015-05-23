@@ -1,12 +1,12 @@
 ---
 vms:
 - name: master
-  box: ubuntu-server-12042-x64-vbox4210-nocm
+  box: hashicorp/precise64
   roles:
   - pe-puppet-master
 
-- name: ubuntu1204-0
-  box: ubuntu-server-12042-x64-vbox4210-nocm
+- name: ubuntu1404-0
+  box: hashicorp/precise64
   roles:
   - pe-puppet-agent
 

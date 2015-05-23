@@ -3,3 +3,6 @@ force_noop: false
 
 classes:
   - site::profile::pe::master
+  - pe_repo::platform::debian_7_amd64
+  - pe_repo::platform::ubuntu_1404_amd64
+  - pe_repo::platform::el_6_x86_64

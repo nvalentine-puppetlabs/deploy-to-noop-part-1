@@ -3,5 +3,5 @@
 # Updated: 2013-08-08
 boxes:
   'centos-65-x64-vbox4210-nocm': 'http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-nocm.box'
-  'ubuntu-server-12042-x64-vbox4210-nocm': 'http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box'
+  'hashicorp/precise64': 'https://atlas.hashicorp.com/hashicorp/boxes/precise64'
   'debian-73-x64-virtualbox-nocm': 'http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-nocm.box'

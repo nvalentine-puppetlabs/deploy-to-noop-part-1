@@ -10,13 +10,14 @@ roles:
     provisioners:
       - {type: hosts}
       - {type: pe_bootstrap, role: !ruby/sym master}
-      - {type: shell, inline: '/bin/ln -f -s /opt/puppet/bin/puppet /usr/bin/puppet'}
-      - {type: puppet, manifests_path: ['vm','/vagrant/puppet/environments/production/manifests'], manifest_file: site.pp, options: '--modulepath=/vagrant/puppet/environments/production/modules:/opt/puppet/share/puppet/modules --hiera_config=/vagrant/puppet/environments/production/hiera_vagrant.yaml --verbose --debug'}
+      - {type: shell, inline: '/bin/rm -rf /etc/puppetlabs/puppet/environments/production && /bin/ln -f -s /vagrant/puppet/environments/production /etc/puppetlabs/puppet/environments/production'}
+      - {type: shell, inline: '/bin/ln -f -s /etc/puppetlabs/puppet/environments/production/hiera.yaml /etc/puppetlabs/puppet/hiera.yaml && service pe-puppetserver restart'}
+      - {type: puppet, manifests_path: ['vm','/etc/puppetlabs/puppet/environments/production/manifests'], manifest_file: site.pp, options: '--modulepath=/etc/puppetlabs/puppet/environments/production/modules:/opt/puppet/share/puppet/modules --hiera_config=/etc/puppetlabs/puppet/environments/production/hiera.yaml --verbose --debug'}
 
   pe-puppet-agent:
     private_networks:
       - {ip: '0.0.0.0', auto_network: true}
     provisioners:
       - {type: hosts}
-      - {type: pe_bootstrap}
-      - {type: shell, inline: '/bin/ln -s /opt/puppet/bin/puppet /usr/bin/puppet'}
+#      - {type: pe_bootstrap}
+      - {type: shell, inline: 'apt-get -y install curl ; yum install -y curl ; /usr/bin/curl -sk https://master:8140/packages/current/install.bash | /bin/bash'}

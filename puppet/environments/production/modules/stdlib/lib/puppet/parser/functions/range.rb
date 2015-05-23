@@ -27,6 +27,13 @@ Will return: ["a","b","c"]
     range("host01", "host10")
 
 Will return: ["host01", "host02", ..., "host09", "host10"]
+
+Passing a third argument will cause the generated range to step by that
+interval, e.g.
+
+    range("0", "9", "2")
+
+Will return: [0,2,4,6,8]
     EOS
   ) do |arguments|
 
@@ -37,6 +44,7 @@ Will return: ["host01", "host02", ..., "host09", "host10"]
     if arguments.size > 1
       start = arguments[0]
       stop  = arguments[1]
+      step  = arguments[2].nil? ? 1 : arguments[2].to_i.abs
 
       type = '..' # We select simplest type for Range available in Ruby ...
 
@@ -57,21 +65,21 @@ Will return: ["host01", "host02", ..., "host09", "host10"]
       end
     end
 
-      # Check whether we have integer value if so then make it so ...
-      if start.match(/^\d+$/)
-        start = start.to_i
-        stop  = stop.to_i
-      else
-        start = start.to_s
-        stop  = stop.to_s
-      end
+    # Check whether we have integer value if so then make it so ...
+    if start.to_s.match(/^\d+$/)
+      start = start.to_i
+      stop  = stop.to_i
+    else
+      start = start.to_s
+      stop  = stop.to_s
+    end
 
-      range = case type
-        when /^(\.\.|\-)$/ then (start .. stop)
-        when /^(\.\.\.)$/  then (start ... stop) # Exclusive of last element ...
-      end
+    range = case type
+      when /^(\.\.|\-)$/ then (start .. stop)
+      when /^(\.\.\.)$/  then (start ... stop) # Exclusive of last element ...
+    end
 
-      result = range.collect { |i| i } # Get them all ... Pokemon ...
+    result = range.step(step).collect { |i| i } # Get them all ... Pokemon ...
 
     return result
   end

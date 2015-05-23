@@ -10,13 +10,13 @@ You'll need to have downloaded and installed the following:
 For additional dependencies and setup see the Install section below.
 
 # Install
-```bash
-$ sudo gem install bundler
-$ sudo bundle
+```ShellSession
+$ gem install bundler
+$ bundle install
 ```
 To check whether or not your system has all of the dependencies necessary to run the Vagrant environments:
 
-```bash
+```ShellSession
 $ rake deps
 Checking environment dependencies...
 ...
@@ -25,8 +25,8 @@ Congratulations! Everything looks a-ok.
 
 If the above step fails on available Vagrant modules, run:
 
-```bash
-$ sudo rake setup
+```ShellSession
+$ rake setup
 $ rake deps
 ```
 
@@ -39,8 +39,14 @@ The Vagrant environment contains four nodes:
 
 To start up the environment: 
 
-```bash
+```ShellSession
 $ vagrant up --no-provision && vagrant provision
+```
+
+or alternatively
+
+```ShellSession
+$ rake run
 ```
 
 The above will take a few minutes the first time as the VirtualBox VMs are not
@@ -50,8 +56,8 @@ have to be fetched and cached.
 Connecting to the nodes is via the usual Vagrant commands. As an example, 
 to connect to the Puppet Enterprise master:
 
-```bash
-$ vagrant ssh master
+```ShellSession
+$ vagrant ssh /master/
 ```
 
 You can access the Puppet Enterprise Console with u/p admin@puppetlabs.com/puppetlabs
