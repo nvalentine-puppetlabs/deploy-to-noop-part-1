@@ -19,3 +19,18 @@ vms:
   box: centos-65-x64-vbox4210-nocm
   roles:
   - pe-puppet-agent
+
+- name: ubuntu1404-1
+  box: hashicorp/precise64
+  roles:
+  - pe-puppet-agent
+
+- name: debian73-1
+  box: debian-73-x64-virtualbox-nocm
+  roles:
+  - pe-puppet-agent
+
+- name: centos65-1
+  box: centos-65-x64-vbox4210-nocm
+  roles:
+  - pe-puppet-agent
